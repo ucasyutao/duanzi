@@ -1,0 +1,154 @@
+.pc{
+	font-size: 150px !important;
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.main{
+	font-size: 16px;
+	width: 3.75rem;
+	margin: 0 auto;
+
+}
+.itemList .itemVideo{
+	width: 3.75rem;
+	margin-bottom: 0.1rem;
+	box-shadow: 0 10px 10px #AAAAAA;
+}
+.itemList .itemVideo .top{
+	width: 3.75rem;
+	height: 0.4rem;
+	display: flex;
+	align-items: center;
+	background-color:aliceblue;
+}
+.itemVideo .top .aHeader{
+	margin: 0 0.2rem;
+	width: 0.3rem;
+	height: 0.3rem;
+	background-size: 100% auto;
+	border-radius: 0.15rem;
+}
+.itemVideo .top .aName{
+	font-size: 0.16rem;
+	color: #333;
+	font-weight: 800;
+}
+.itemList .itemVideo .middle{
+	width: 3.75rem;
+	height: 2.8rem;
+	position: relative;
+	background-color: #333333;
+}
+.itemVideo .middle .videPic{
+	width: 100%;
+	height: 100%;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.itemVideo .middle .videoText{
+	position: absolute;
+	top: 0.05rem;
+	left: 0.1rem;
+	color: #eee;
+}
+.itemVideo .middle .videoPlay{
+	width: 100%;
+	height: 100%;
+	background-size: 0.4rem 0.4rem;
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	left: 0;
+	top: 0;	
+	cursor: pointer;
+}
+.itemVideo .middle .videoView{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	width: 3.75rem;
+	height: 0.3rem;
+	justify-content: flex-end;
+	align-items: center;
+	padding:0 0.1rem;
+}
+.itemVideo .middle .videoView>img{
+	width: 0.3rem;
+	height: 0.3rem;
+	background-position:center;
+}
+.itemVideo .middle .videoView>span{
+	line-height: 0.3rem;
+	color: #aaa;
+	font-size: 0.16rem;
+}
+.itemList .itemVideo .bottom{
+	width: 3.75rem;
+	height: 0.5rem;
+	display: flex;
+	align-items: center;
+	margin: 0 0.1rem;
+}
+.itemVideo .bottom .cHeader{
+	width: 0.3rem;
+	height: 0.3rem;
+	background-size: 100% 100%;
+	border-radius: 0.15rem;
+	margin: 0 0.1rem;
+}
+.itemVideo .bottom .coment .cName{
+	font-size: 0.15rem;
+	font-weight: 700;
+}
+.itemVideo .bottom .coment .cText{
+	font-size: 0.12rem;
+	color: #333;
+}
+.main .playPage{
+	position: fixed;
+	width: 3.75rem;
+	height: 100vh;
+	margin: 0 auto;
+	top: 0;
+	/* display: none; */
+	background-color: rgba(0,0,0,0.8);
+	display: none;
+}
+.playPage video{
+	width: 100%;
+	height: 100%;
+}
+.playPage .close{
+	position: absolute;
+	cursor: pointer;
+	width: 0.3rem;
+	height: 0.3rem;
+	background-image: url(../img/close.png);
+	right: 0.2rem;
+	top: 0.2rem;
+	background-size: 70% 70%;
+	background-color: rgba(0,0,0,0.7);
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 0.15rem;
+	
+}
+.fresh{
+	width: 3.75rem;
+	height: 0.4rem;
+	text-align: center;
+	font-size: 0.2rem;
+	font-weight: 500;
+	line-height: 0.4rem;
+	background-color: #efefef;
+	border-radius: 0.2rem;
+	color: #666;
+	cursor: pointer;
+	box-shadow: 0 5px 5px #666666;
+}
+

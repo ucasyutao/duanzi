@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+	<body>
+		<div class="main">
+			<div class="itemList">
+				<!-- <div class="itemVideo">
+					<div class="top">
+						<div class="aHeader" style="background-image: url(http://wimg.spriteapp.cn/profile/large/2020/02/18/5e4ae9048c391_mini.png);"></div>
+						<div class="aName">我不配</div>
+					</div>
+					<div class="middle">
+						<div class="videPic" style="background-image: url(http://wimg.spriteapp.cn/picture/2020/0425/5ea44f82e5715_wpd.jpg);"></div>
+						<div class="videoText">用户们拍视频的时候就得学习一下阿姨们的精神</div>
+						<div class="videoPlay" style="background-image: url(img/play.png);"></div>
+						<div class="videoView">
+							<img src="img/eye.png" >
+							<span>103</span>
+						</div>
+					</div>
+					<div class="bottom">
+						<div class="cHeader" style="background-image: url(http://wimg.spriteapp.cn/profile/large/2015/10/21/5626c25b63877_mini.jpg);"></div>
+						<div class="coment">
+							<div class="cName">施主请留步</div>
+							<div class="cText">揪下来的纸自己再去卖，我们这也有</div>
+						</div>
+					</div>
+				</div> -->
+			</div>
+			<div class="fresh">
+				再来十条
+			</div>
+			<div class="playPage">
+				<video class = 'media' controls="controls" src="http://uvideo.spriteapp.cn/video/2020/0425/5ea44f82e5715_wpd.mp4">
+				</video>
+				<div class="close"></div>
+			</div>
+			
+			
+		</div>
+		<script src="js/getAjax.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var httpUrl = 'https://api.apiopen.top/getJoke?page=1&count=10&type=video'
+			var itemListDom = document.querySelector('.itemList')
+			var videoData = [];
+			var playPageDom = document.querySelector('.playPage');
+			var videoDom = document.querySelector('.playPage .media')
+			var closeDom = document.querySelector('.playPage .close')
+			var freshDom = document.querySelector('.fresh')
+			var num = 1;
+			getAjax(httpUrl,function(xhr){
+				//console.log(JSON.parse(xhr.response));
+				videoData = JSON.parse(xhr.response).result
+				console.log(videoData)
+				render();
+			})
+			itemListDom.addEventListener('click',function(e){
+				if(e.target.className=='videoPlay'){
+					var index = e.target.dataset.index;
+					var item = videoData[index];
+					console.log(item.video)
+					playPageDom.style.display = "block";
+					videoDom.src = item.video;
+					videoDom.volume = 0.3;
+					videoDom.play();
+				}
+			})
+			closeDom.onclick = function(){
+				videoDom.pause();
+				playPageDom.style.display = "none";
+			}
+			freshDom.onclick = function(){
+				itemListDom.innerHTML='';
+				num++;
+				httpUrl = 'https://api.apiopen.top/getJoke?page='+num+'&count=10&type=video';
+				getAjax(httpUrl,function(xhr){
+					//console.log(JSON.parse(xhr.response));
+					videoData = JSON.parse(xhr.response).result
+					console.log(videoData)
+					render();
+				})
+			}
+			
+			
+			function render(){
+				videoData.forEach(function(item,index){
+					var itemVideoDom = document.createElement('div');
+					itemVideoDom.className = 'itemVideo';
+					itemVideoDom.innerHTML = `
+						<div class="top">
+							<div class="aHeader" style="background-image: url(${item.header});"></div>
+							<div class="aName">${item.name}</div>
+						</div>
+						<div class="middle">
+							<div class="videPic" style="background-image: url(${item.thumbnail});"></div>
+							<div class="videoText">${item.text}</div>
+							<div class="videoPlay" style="background-image: url(img/play.png);" data-index = ${index}></div>
+							<div class="videoView">
+								<img src="img/eye.png" >
+								<span>${item.up}</span>
+							</div>
+						</div>
+						<div class="bottom">
+							<div class="cHeader" style="background-image: url(http://wimg.spriteapp.cn/profile/large/2015/10/21/5626c25b63877_mini.jpg);"></div>
+							<div class="coment">
+								<div class="cName">施主请留步</div>
+								<div class="cText">揪下来的纸自己再去卖，我们这也有</div>
+							</div>
+						</div>
+					`
+					itemListDom.appendChild(itemVideoDom);
+				})
+			}
+		</script>
+		<script src="js/ytXys.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
